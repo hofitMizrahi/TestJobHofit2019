@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.jobtest">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -11,15 +12,23 @@
         android:name=".application.JobTestApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:targetApi="n">
 
-        <activity android:name=".ui.flow.posts.view.PostsActivity">
+        <activity android:name=".ui.flow.posts.view.PostsActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.flow.link_screen.view.WebActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.flow.video_screen.view.VideoActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
