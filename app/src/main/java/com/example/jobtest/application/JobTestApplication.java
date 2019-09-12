@@ -4,7 +4,6 @@ import android.app.Application;
 import com.example.jobtest.di.components.ApplicationComponent;
 import com.example.jobtest.di.components.DaggerApplicationComponent;
 import com.example.jobtest.di.modules.ApplicationModule;
-import com.example.jobtest.network.NetworkController;
 
 import javax.inject.Inject;
 
@@ -21,6 +20,7 @@ public class JobTestApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         mJobTestApplication = this;
         initDependencies();
     }

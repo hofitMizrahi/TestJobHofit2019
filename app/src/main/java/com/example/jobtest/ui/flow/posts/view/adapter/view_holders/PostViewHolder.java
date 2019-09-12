@@ -8,17 +8,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jobtest.R;
+import com.example.jobtest.interfaces.IExecuteItemClick;
 import com.example.jobtest.network.response.Entry;
+import com.example.jobtest.ui.flow.posts.view.adapter.PostsRecyclerAdapter;
+import com.example.jobtest.ui.utils.Constants;
 import com.example.jobtest.ui.utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class VideoViewHolder extends RecyclerView.ViewHolder {
+public class PostViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.root)
-    View mRoot;
+    private boolean isVideoType;
+    private IExecuteItemClick mListener;
+
+    @BindView(R.id.play_video_btn)
+    View mPlayVideoBtn;
 
     @BindView(R.id.title)
     TextView mTitle;
@@ -29,12 +36,28 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.base_image)
     ImageView mBaseImage;
 
-    public VideoViewHolder(@NonNull View itemView) {
+    @OnClick(R.id.root)
+    void onRootClicked(){
+        mListener.onItemClick(getAdapterPosition());
+    }
+
+    public PostViewHolder(@NonNull View itemView, int viewType, PostsRecyclerAdapter adapter) {
         super(itemView);
         ButterKnife.bind(this, itemView);
+
+        mListener = adapter;
+
+        if(viewType == Constants.VIDEO_TYPE)
+            isVideoType = true;
     }
 
     public void onBind(Entry entry){
+
+        if(isVideoType){
+            mPlayVideoBtn.setVisibility(View.VISIBLE);
+        }else{
+            mPlayVideoBtn.setVisibility(View.GONE);
+        }
 
         if(entry != null) {
             mTitle.setText(entry.getTitle());
@@ -48,5 +71,7 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
                 Picasso.get().load(entry.getMediaGroup().get(0).getMediaItem().get(0).getSrc()).into(mBaseImage);
             }
         }
+
+
     }
 }

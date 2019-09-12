@@ -2,10 +2,10 @@ package com.example.jobtest.network;
 
 
 import com.example.jobtest.interfaces.IExecutable;
-import com.example.jobtest.network.response.LinksResponse;
+import com.example.jobtest.network.response.DataResponse;
 
 public interface NetworkController {
 
-    void getVideoList(IExecutable<LinksResponse> callback);
-    void getLinksList(IExecutable<LinksResponse> callback);
+    void getVideoList(IExecutable<DataResponse> callback);
+    void getLinksList(IExecutable<DataResponse> callback);
 }

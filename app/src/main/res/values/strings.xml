@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">JobTest</string>
+    <string name="app_name">חדשות</string>
+    <string name="no_data_found">לא נמצא מידע</string>
+    <string name="search">חיפוש</string>
 </resources>

@@ -18,4 +18,6 @@ public class PostsModule {
     PostsContract.View provideView(){
         return mView;
     }
+
+
 }

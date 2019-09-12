@@ -1,5 +1,6 @@
 package com.example.jobtest.di.components;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.example.jobtest.di.modules.ApplicationModule;

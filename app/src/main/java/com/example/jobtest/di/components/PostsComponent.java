@@ -2,6 +2,7 @@ package com.example.jobtest.di.components;
 
 import com.example.jobtest.di.modules.PostsModule;
 import com.example.jobtest.di.scope.PerActivity;
+import com.example.jobtest.ui.flow.posts.presenter.PostsPresenter;
 import com.example.jobtest.ui.flow.posts.view.PostsActivity;
 import dagger.Component;
 

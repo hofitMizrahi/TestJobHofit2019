@@ -2,9 +2,10 @@ package com.example.jobtest.di.modules;
 
 import com.example.jobtest.di.scope.PerActivity;
 import com.example.jobtest.ui.flow.link_screen.contract.WebContract;
-
 import dagger.Module;
 import dagger.Provides;
+
+import static com.example.jobtest.ui.flow.posts.view.PostsActivity.LINK_URL;
 
 @Module
 public class WebModule {
@@ -19,5 +20,11 @@ public class WebModule {
     @PerActivity
     WebContract.View provideView(){
         return mView;
+    }
+
+    @Provides
+    @PerActivity
+    String provideUrl(){
+        return (String) mView.getActivity().getIntent().getSerializableExtra(LINK_URL);
     }
 }
