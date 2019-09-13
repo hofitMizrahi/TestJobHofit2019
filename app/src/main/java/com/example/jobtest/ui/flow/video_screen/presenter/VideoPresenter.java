@@ -9,11 +9,16 @@ import javax.inject.Inject;
 public class VideoPresenter implements VideoContract.Presenter{
 
     @Inject
+    VideoContract.View mView;
+
+    @Inject
     public VideoPresenter() {
     }
 
     @Override
     public void onStart() {
 
+        mView.displayProgressBar();
+        mView.initViews();
     }
 }

@@ -3,8 +3,10 @@ package com.example.jobtest.ui.flow.posts.view.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.jobtest.R;
 import com.example.jobtest.interfaces.IExecuteItemClick;
 import com.example.jobtest.network.response.Entry;
@@ -14,6 +16,7 @@ import com.example.jobtest.ui.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
 
 public class PostsRecyclerAdapter extends RecyclerView.Adapter implements IExecuteItemClick {
@@ -61,12 +64,23 @@ public class PostsRecyclerAdapter extends RecyclerView.Adapter implements IExecu
     }
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClick(int position, boolean isVideo) {
 
-        if(mList.get(position).getType().getValue().equals(VIDEO)){
-            mPresenterListener.onPlayVideoClicked(mList.get(position));
-        }else {
-            mPresenterListener.onLinkClicked(mList.get(position).getLink().getHref());
+        Entry post = mList.get(position);
+        if (post != null) {
+
+            if (isVideo) {
+
+                if (post.getContent() != null) {
+                    mPresenterListener.onPlayVideoClicked(post.getContent().getSrc());
+                }
+
+            } else {
+
+                if (post.getLink() != null) {
+                    mPresenterListener.onLinkClicked(post.getLink().getHref());
+                }
+            }
         }
     }
 
@@ -75,24 +89,24 @@ public class PostsRecyclerAdapter extends RecyclerView.Adapter implements IExecu
         List<Entry> filterList = new ArrayList<>();
         this.mList = postsList;
 
-        if(mList != null){
+        if (mList != null) {
 
-            if(!newText.isEmpty()){
+            if (!newText.isEmpty()) {
 
                 newText = newText.toLowerCase();
-                for (Entry obj: mList){
+                for (Entry obj : mList) {
 
-                    if (obj.getTitle().toLowerCase().contains(newText)){
+                    if (obj.getTitle().toLowerCase().contains(newText)) {
                         filterList.add(obj);
                         setList(filterList);
                     }
                     boolean isFull = false;
-                    if(filterList.size() > 0){
+                    if (filterList.size() > 0) {
                         isFull = true;
                     }
                     mPresenterListener.filterFinish(isFull);
                 }
-            }else {
+            } else {
                 setList(mList);
                 mPresenterListener.filterFinish(true);
             }
@@ -104,10 +118,12 @@ public class PostsRecyclerAdapter extends RecyclerView.Adapter implements IExecu
         mList = filterList;
     }
 
-    public interface IListener{
+    public interface IListener {
 
         void onLinkClicked(String url);
-        void onPlayVideoClicked(Entry entry);
+
+        void onPlayVideoClicked(String src);
+
         void filterFinish(boolean isFull);
     }
 }

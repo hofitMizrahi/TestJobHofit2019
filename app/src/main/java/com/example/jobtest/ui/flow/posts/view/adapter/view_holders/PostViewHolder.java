@@ -21,7 +21,7 @@ import butterknife.OnClick;
 
 public class PostViewHolder extends RecyclerView.ViewHolder {
 
-    private boolean isVideoType;
+    private boolean mIsVideoType;
     private IExecuteItemClick mListener;
 
     @BindView(R.id.play_video_btn)
@@ -38,7 +38,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     @OnClick(R.id.root)
     void onRootClicked(){
-        mListener.onItemClick(getAdapterPosition());
+        mListener.onItemClick(getAdapterPosition(), mIsVideoType);
     }
 
     public PostViewHolder(@NonNull View itemView, int viewType, PostsRecyclerAdapter adapter) {
@@ -48,12 +48,12 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         mListener = adapter;
 
         if(viewType == Constants.VIDEO_TYPE)
-            isVideoType = true;
+            mIsVideoType = true;
     }
 
     public void onBind(Entry entry){
 
-        if(isVideoType){
+        if(mIsVideoType){
             mPlayVideoBtn.setVisibility(View.VISIBLE);
         }else{
             mPlayVideoBtn.setVisibility(View.GONE);

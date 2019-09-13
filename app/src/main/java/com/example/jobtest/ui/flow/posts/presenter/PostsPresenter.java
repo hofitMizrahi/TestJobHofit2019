@@ -70,8 +70,8 @@ public class PostsPresenter implements PostsContract.Presenter {
     }
 
     @Override
-    public void onPlayVideoClicked(Entry entry) {
-
+    public void onPlayVideoClicked(String src) {
+        mView.navigateToVideoPage(src);
     }
 
     @Override

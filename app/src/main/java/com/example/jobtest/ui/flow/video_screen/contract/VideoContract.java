@@ -8,6 +8,7 @@ public interface VideoContract {
 
     interface View extends BaseView {
 
+        void initViews();
     }
 
     interface Presenter extends BasePresenter {

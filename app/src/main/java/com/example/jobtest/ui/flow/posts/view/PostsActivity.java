@@ -24,6 +24,7 @@ import com.example.jobtest.ui.flow.link_screen.view.WebActivity;
 import com.example.jobtest.ui.flow.posts.contract.PostsContract;
 import com.example.jobtest.ui.flow.posts.presenter.PostsPresenter;
 import com.example.jobtest.ui.flow.posts.view.adapter.PostsRecyclerAdapter;
+import com.example.jobtest.ui.flow.video_screen.view.VideoActivity;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ import butterknife.BindView;
 public class PostsActivity extends BaseActivity implements PostsContract.View, androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
     public static final String LINK_URL = "link_url";
+    public static final String VIDEO_SRC = "video_src";
 
     private List<Entry> mPostsList;
 
@@ -101,8 +103,12 @@ public class PostsActivity extends BaseActivity implements PostsContract.View, a
 
     @Override
     public void navigateToWebPage(String url) {
-
         startActivity(new Intent(this, WebActivity.class).putExtra(LINK_URL, url));
+    }
+
+    @Override
+    public void navigateToVideoPage(String streamSrc) {
+        startActivity(new Intent(this, VideoActivity.class).putExtra(VIDEO_SRC, streamSrc));
     }
 
     @Override

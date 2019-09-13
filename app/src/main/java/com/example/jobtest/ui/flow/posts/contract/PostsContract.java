@@ -16,6 +16,9 @@ public interface PostsContract {
         void initViews();
         void showNoDataScreen();
         void navigateToWebPage(String url);
+
+        void navigateToVideoPage(String streamSrc);
+
         void showList();
         void showNoData();
     }
