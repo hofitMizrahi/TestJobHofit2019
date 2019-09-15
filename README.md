@@ -6,9 +6,10 @@ Clicking on a video type post opens a screen with a media player and the video c
 
 Clicking on a link type post opens a web page displaying the article.
 
--Filter Post that user can search
+- Filter Post that user can search
 
 - MVP architecture.
+
 - Third-party libraries likes: Picasso, Butter Knife, Retrofit, Dagger2 (dependency injection) etc..
 
 - Designed app
