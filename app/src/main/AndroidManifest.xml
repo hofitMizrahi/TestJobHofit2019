@@ -27,8 +27,7 @@
         <activity android:name=".ui.flow.link_screen.view.WebActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.flow.video_screen.view.VideoActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.flow.video_screen.view.VideoActivity" />
 
     </application>
 

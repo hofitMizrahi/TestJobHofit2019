@@ -6,7 +6,7 @@
     android:id="@+id/root"
     android:orientation="vertical"
     android:paddingEnd="@dimen/size_16"
-    android:paddingTop="@dimen/size_16"
+    android:paddingBottom="@dimen/size_16"
     android:paddingStart="@dimen/size_16">
 
     <androidx.cardview.widget.CardView
